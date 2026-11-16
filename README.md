@@ -17,6 +17,7 @@ todas as janelas (inclusive tela cheia), sem os pop-ups padrão.
 ## Instalar
 
 ```
+git clone https://github.com/AlanSchaeffer/teams-bubbles
 cd teams-bubbles
 ./install.sh
 ```
@@ -56,6 +57,12 @@ journalctl --user -o cat | grep teams-bubbles
 
 O log contém o título de cada notificação (nomes de pessoas/grupos). Desligue
 depois de diagnosticar.
+
+## Testes e outras versões do GNOME
+
+`tests/run-headless.sh` testa a extensão num GNOME Shell sem tela, isolado da
+sua sessão. Para portar para outra versão do Ubuntu/GNOME, veja
+[PORTING.md](PORTING.md).
 
 ## Licença
 
