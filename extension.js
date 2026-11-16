@@ -159,6 +159,7 @@ export default class TeamsBubblesExtension extends Extension {
     }
 
     disable() {
+        this._setUnredirectInhibited(false);
         if (this._focusTimeoutId) {
             GLib.source_remove(this._focusTimeoutId);
             this._focusTimeoutId = 0;
@@ -401,6 +402,21 @@ export default class TeamsBubblesExtension extends Extension {
         this._stack.visible = show;
         if (!show)
             this._tooltip.hide();
+        this._setUnredirectInhibited(show);
+    }
+
+    // Janela em tela cheia pode ser exibida direto pelo hardware ("direct
+    // scanout"), sem passar pelo compositor; aí as bolhas não são desenhadas e
+    // parecem ficar atrás dela. Os pop-ups e OSDs do próprio Shell fazem o
+    // mesmo enquanto estão visíveis.
+    _setUnredirectInhibited(inhibit) {
+        if (inhibit === !!this._unredirectInhibited)
+            return;
+        this._unredirectInhibited = inhibit;
+        if (inhibit)
+            global.compositor.disable_unredirect();
+        else
+            global.compositor.enable_unredirect();
     }
 
     _refresh() {

@@ -43,6 +43,8 @@ check "fase A: nenhum pop-up de notificação do Teams" "ok" \
        shown.length ? shown.map(n => n.title).join(', ') : 'ok'")"
 check "fase A: foto copiada (sobrevive ao arquivo temporário)" "true" \
   "$(ev "const x = $E._entries.get('fulano de tal'); String(!!x.avatarPath && GLib.file_test(x.avatarPath, GLib.FileTest.EXISTS))")"
+check "tela cheia: inibe o direct scanout enquanto há bolhas" "true" \
+  "$(ev "String(!!$E._unredirectInhibited)")"
 ev "$E._showTooltip($E._entries.get('fulano de tal')); 'ok'" >/dev/null
 sleep 0.4; shot bubbles-tooltip
 ev "$E._hideTooltip(); 'ok'" >/dev/null
@@ -77,6 +79,9 @@ check "descartar remove a bolha" "false" "$(ev "String($E._entries.has('beltrano
 ev "$E._clearAll(); 'ok'" >/dev/null
 sleep 0.5
 check "limpar lista esvazia e esconde" "0 false" "$(ev "$E._entries.size + ' ' + $E._stack.visible")"
+
+check "tela cheia: libera o direct scanout quando não há bolhas" "false" \
+  "$(ev "String(!!$E._unredirectInhibited)")"
 
 # Desativar / reativar
 # Estados (GNOME 46+): 1 ACTIVE, 2 INACTIVE, 3 ERROR. Em versões antigas os nomes mudam.
