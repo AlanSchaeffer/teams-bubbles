@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.teams-bubbles" path="/org/gnome/shell/extensions/teams-bubbles/">
+    <key name="monitor-connector" type="s">
+      <default>''</default>
+      <summary>Conector do monitor onde as bolhas aparecem (vazio = principal)</summary>
+    </key>
+    <key name="clear-on-focus" type="b">
+      <default>false</default>
+      <summary>Limpar todas as bolhas quando a janela do Teams recebe foco</summary>
+    </key>
+    <key name="show-group-messages" type="b">
+      <default>false</default>
+      <summary>Mostrar mensagens de grupo em que você não foi mencionado</summary>
+    </key>
+    <key name="suppress-banners" type="b">
+      <default>true</default>
+      <summary>Impedir os pop-ups padrão do GNOME para as notificações interceptadas</summary>
+    </key>
+    <key name="show-meetings" type="b">
+      <default>true</default>
+      <summary>Mostrar lembretes de reunião do Teams como bolha</summary>
+    </key>
+    <key name="capture-all-chrome" type="b">
+      <default>false</default>
+      <summary>Interceptar também notificações de outros sites do Chrome (agrupadas por site)</summary>
+    </key>
+    <key name="debug-log" type="b">
+      <default>false</default>
+      <summary>Gravar no journal como cada notificação foi classificada (diagnóstico)</summary>
+    </key>
+  </schema>
+</schemalist>

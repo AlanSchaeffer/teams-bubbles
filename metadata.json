@@ -1,0 +1,15 @@
+{
+  "uuid": "teams-bubbles@alanschaeffer.github.io",
+  "name": "Teams Bubbles",
+  "description": "Mostra quem te chamou no Teams (PWA) como bolhas flutuantes no canto direito do monitor escolhido.",
+  "shell-version": [
+    "50"
+  ],
+  "session-modes": [
+    "user",
+    "unlock-dialog"
+  ],
+  "settings-schema": "org.gnome.shell.extensions.teams-bubbles",
+  "version-name": "1.0",
+  "url": "https://github.com/AlanSchaeffer/teams-bubbles"
+}
